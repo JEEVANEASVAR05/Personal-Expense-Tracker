@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise personal income and expense tracker">
+  <title>SpendWise | Money Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a href="#" class="logo"><span class="logo-icon">₹</span> SpendWise</a>
+      <span class="tag">PERSONAL FINANCE</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR MONEY, YOUR CONTROL</p>
+      <h1>Spend smarter<span>.</span></h1>
+      <p class="subtitle">Track your money. Understand your habits. Plan better.</p>
+    </section>
+
+    <section class="dashboard" aria-label="Money summary">
+      <article class="summary-card balance-card">
+        <p>Total balance</p>
+        <h2 id="balance">₹0.00</h2>
+        <span>Income minus expenses</span>
+      </article>
+      <article class="summary-card">
+        <p>Total income</p>
+        <h2 id="income">₹0.00</h2>
+        <span class="income-label">Money received</span>
+      </article>
+      <article class="summary-card">
+        <p>Total expenses</p>
+        <h2 id="expenses">₹0.00</h2>
+        <span class="expense-label">Money spent</span>
+      </article>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel">
+        <h2>Add transaction</h2>
+        <p class="panel-subtitle">Record your income or spending.</p>
+
+        <form id="transaction-form">
+          <label for="description">Description</label>
+          <input id="description" type="text" maxlength="80"
+                 placeholder="e.g. Lunch, Salary" required>
+
+          <label for="amount">Amount (₹)</label>
+          <input id="amount" type="number" min="0.01" max="100000000"
+                 step="0.01" placeholder="e.g. 250" required>
+
+          <label for="type">Transaction type</label>
+          <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+
+          <label for="category">Category</label>
+          <select id="category">
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Education</option>
+            <option>Salary</option>
+            <option>Business</option>
+            <option>Other</option>
+          </select>
+
+          <button class="primary-btn" type="submit">+ Add transaction</button>
+        </form>
+        <p id="feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel transactions-panel">
+        <div class="list-heading">
+          <div>
+            <h2>Transactions</h2>
+            <p class="panel-subtitle">Your recent money activity.</p>
+          </div>
+          <select id="filter" aria-label="Filter transactions">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expenses</option>
+          </select>
+        </div>
+
+        <ul id="transaction-list"></ul>
+        <p id="empty-message" class="empty-message">
+          No transactions yet. Add your first one!
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <span>SpendWise · Build better money habits.</span>
+      <button id="clear-all" class="clear-btn" type="button">
+        Clear all
+      </button>
+    </footer>
+  </main>
+</body>
+</html>
